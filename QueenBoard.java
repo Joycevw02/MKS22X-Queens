@@ -3,7 +3,12 @@ public class QueenBoard{
   private int[][] board;
 
   public QueenBoard(int size){
-
+    //Set all the values on the board to 0
+    for (int r = 0; r < size; r ++){
+      for (int c = 0; c < size; c ++){
+        board[r][c] = 0;
+      }
+    }
   }
 
   private boolean addQueen(int r, int c){
