@@ -1,6 +1,7 @@
 public class QueenBoard{
 
   private int[][] board;
+  private int size;
 
   public QueenBoard(int size){
     //Set all the values on the board to 0
@@ -12,10 +13,26 @@ public class QueenBoard{
   }
 
   private boolean addQueen(int r, int c){
-
+    if (board[r][c] != 0){
+      return false;
+    }
+    else{
+      return true;
   }
 
   private boolean removeQueen(int r, int c){
+
+  }
+
+  private void diagonal(int r, int c){
+
+  }
+
+  private void horizontal(int r, int c){
+
+  }
+
+  private void vertical(int r, int c){
 
   }
 
