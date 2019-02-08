@@ -46,7 +46,11 @@ public class QueenBoard{
   }
 
   private void horizontal(int r, int c){
-
+    for (int col = c + 1; col < size; col ++){
+      if (board[r][col] != -1){
+        board[r][col] ++;
+      }
+    }
   }
 
   private void vertical(int r, int c){
