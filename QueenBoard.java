@@ -19,6 +19,18 @@ public class QueenBoard{
     }
     else{
       board[r][c] = -1;
+      int i = 1;
+      while (r + i < side || r - i >= 0 || c + i < side){
+        if (r + i < side && c + i < side){
+          board[r + i][c + i] += 1;
+        }
+        if (r - i >= 0 && c + i < side){
+          board[r - i][c + i] += 1;
+        }
+        if (c + i < side){
+          board[r][c + i] += 1;
+        }
+      }
       return true;
   }
 
@@ -26,38 +38,8 @@ public class QueenBoard{
 
   }
 
-  private void diagonal(int r, int c){
-    //Diagonal, towards the upper right
-    for (int col = c + 1; col < side; col ++){
-      for(int row = r - 1; row >= 0; row --){
-        if (board[col][row] != -1){
-          board[col][row] += 1;
-        }
-      }
-    }
-    //Diagonal, towards the lower right
-    for (int col = c + 1; col < side; col ++){
-      for(int row = r + 1; row < side; row ++){
-        if (board[col][row] != -1){
-          board[col][row] += 1;
-        }
-      }
-    }
-  }
 
-  private void horizontal(int r, int c){
-    for (int col = c + 1; col < size; col ++){
-      if (board[r][col] != -1){
-        board[r][col] ++;
-      }
-    }
-  }
-
-  private void vertical(int r, int c){
-
-  }
-
-  /**
+  /*
  *@return The output string formatted as follows:
  *All numbers that represent queens are replaced with 'Q'
  *all others are displayed as underscores '_'
