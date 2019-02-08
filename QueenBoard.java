@@ -1,7 +1,7 @@
 public class QueenBoard{
 
   private int[][] board;
-  private int size;
+  private int side;
 
   public QueenBoard(int size){
     //Set all the values on the board to 0
@@ -10,6 +10,7 @@ public class QueenBoard{
         board[r][c] = 0;
       }
     }
+    side = size;
   }
 
   private boolean addQueen(int r, int c){
@@ -17,6 +18,7 @@ public class QueenBoard{
       return false;
     }
     else{
+      board[r][c] = -1;
       return true;
   }
 
@@ -25,7 +27,22 @@ public class QueenBoard{
   }
 
   private void diagonal(int r, int c){
-
+    //Diagonal, towards the upper right
+    for (int col = c + 1; col < side; col ++){
+      for(int row = r - 1; row >= 0; row --){
+        if (board[col][row] != -1){
+          board[col][row] += 1;
+        }
+      }
+    }
+    //Diagonal, towards the lower right
+    for (int col = c + 1; col < side; col ++){
+      for(int row = r + 1; row < side; row ++){
+        if (board[col][row] != -1){
+          board[col][row] += 1;
+        }
+      }
+    }
   }
 
   private void horizontal(int r, int c){
