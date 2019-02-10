@@ -32,6 +32,7 @@ public class QueenBoard{
         }
       }
       return true;
+    }
   }
 
   private boolean removeQueen(int r, int c){
@@ -52,7 +53,22 @@ public class QueenBoard{
  *excludes the character up to the *)
  */
  public String toString(){
-
+   String ans = "";
+   for (int row = 0; row < side; row ++){
+     for (int col = 0; col < side; col ++){
+       if (board[row][col] == -1){
+         ans += "Q ";
+       }
+       else if (board[row][col] == 0){
+         ans += "_ ";
+       }
+       else{
+         ans += "X ";
+       }
+     }
+     ans += "\n";
+   }
+   return ans;
  }
 
  /**
