@@ -4,6 +4,7 @@ public class QueenBoard{
   private int side;
 
   public QueenBoard(int size){
+    board = new int[size][size];
     //Set all the values on the board to 0
     for (int r = 0; r < size; r ++){
       for (int c = 0; c < size; c ++){
@@ -12,24 +13,23 @@ public class QueenBoard{
     }
     side = size;
   }
-
   private boolean addQueen(int r, int c){
     if (board[r][c] != 0){
       return false;
     }
     else{
       board[r][c] = -1;
-      int i = 1;
-      while (r + i < side || r - i >= 0 || c + i < side){
-        if (r + i < side && c + i < side){
-          board[r + i][c + i] += 1;
-        }
-        if (r - i >= 0 && c + i < side){
-          board[r - i][c + i] += 1;
-        }
-        if (c + i < side){
-          board[r][c + i] += 1;
-        }
+      //Horizontal Square
+      for (int i = r + 1; i < side; i ++){
+        board[r][i] += 1;
+      }
+      //Diagonal to the lower right
+      for (int i = 0; r + i < side && c + i < side; i ++){
+        board[r + i][c + i] += 1;
+      }
+      //Diagonal to the upper right
+      for (int i = 0; r - 1 >= 0 && c + 1 < side; i ++){
+        board[r - i][c + i] += 1;
       }
       return true;
     }
@@ -92,7 +92,7 @@ public class QueenBoard{
     QueenBoard test = new QueenBoard(4);
     System.out.println(test.toString());
     System.out.println("______________________");
-    test.addQueen(0,0);
+    test.addQueen(1,1);
     System.out.println(test.toString());
   }
 }
