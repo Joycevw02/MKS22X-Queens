@@ -35,9 +35,9 @@ public class QueenBoard{
     }
   }
 
-  private boolean removeQueen(int r, int c){
-
-  }
+//  private boolean removeQueen(int r, int c){
+//
+//  }
 
 
   /*
@@ -77,15 +77,22 @@ public class QueenBoard{
  *@throws IllegalStateException when the board starts with any non-zero value
 
  */
- public boolean solve(){
-
- }
+ //public boolean solve(){
+//
+// }
 
  /**
  *@return the number of solutions found, and leaves the board filled with only 0's
  *@throws IllegalStateException when the board starts with any non-zero value
  */
- public int countSolutions(){
-
- }
+// public int countSolutions(){
+//
+// }
+  public static void main(String ans[]){
+    QueenBoard test = new QueenBoard(4);
+    System.out.println(test.toString());
+    System.out.println("______________________");
+    test.addQueen(0,0);
+    System.out.println(test.toString());
+  }
 }
