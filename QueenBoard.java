@@ -17,22 +17,20 @@ public class QueenBoard{
     if (board[r][c] != 0){
       return false;
     }
-    else{
-      board[r][c] = -1;
-      //Horizontal Square
-      for (int i = r + 1; i < side; i ++){
-        board[r][i] += 1;
-      }
-      //Diagonal to the lower right
-      for (int i = 0; r + i < side && c + i < side; i ++){
+    //Horizontal Square
+    for (int i = r + 1; i < side; i++) {
+           board[r][i] += 1;
+       }
+    //Diagonal to the lower right
+    for (int i = 0; r + i < side && c + i < side; i++){
         board[r + i][c + i] += 1;
-      }
-      //Diagonal to the upper right
-      for (int i = 0; r - 1 >= 0 && c + 1 < side; i ++){
-        board[r - i][c + i] += 1;
-      }
-      return true;
     }
+    //Diagonal to the upper right
+    for (int i = 0; r - i >= 0 && c + i < side; i++){
+      board[r - i][c + i] += 1;
+    }
+    board[r][c] = -1;
+    return true;
   }
 
 //  private boolean removeQueen(int r, int c){
@@ -89,10 +87,10 @@ public class QueenBoard{
 //
 // }
   public static void main(String ans[]){
-    QueenBoard test = new QueenBoard(4);
+    QueenBoard test = new QueenBoard(5);
     System.out.println(test.toString());
     System.out.println("______________________");
-    test.addQueen(1,1);
+    test.addQueen(2,2);
     System.out.println(test.toString());
   }
 }
