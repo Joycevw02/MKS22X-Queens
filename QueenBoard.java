@@ -15,11 +15,11 @@ public class QueenBoard{
   }
   private boolean addQueen(int r, int c){
     if (board[r][c] != 0){
-      System.out.println("Cannot add queen here!");
+      System.out.println("Cannot add queen (" + r + "," + c + ")");
       return false;
     }
     //Horizontal Square
-    for (int i = r + 1; i < side; i++) {
+    for (int i = r; i < side; i++) {
            board[r][i] += 1;
        }
     //Diagonal to the lower right
@@ -36,7 +36,7 @@ public class QueenBoard{
 
   private boolean removeQueen(int r, int c){
     if (board[r][c] != -1){
-      System.out.println("No queen to remove at this position!");
+      System.out.println("No queen to remove at (" + r + "," + c + ")");
       return false;
     }
     //Horizontal Square
@@ -75,6 +75,21 @@ public class QueenBoard{
        if (board[row][col] == -1){
          ans += "Q ";
        }
+       else{
+         ans += "_ ";
+       }
+     }
+     ans += "\n";
+   }
+   return ans;
+ }
+ private String debug(){
+   String ans = "";
+   for (int row = 0; row < side; row ++){
+     for (int col = 0; col < side; col ++){
+       if (board[row][col] == -1){
+         ans += "Q ";
+       }
        else if (board[row][col] == 0){
          ans += "_ ";
        }
@@ -106,12 +121,17 @@ public class QueenBoard{
 // }
   public static void main(String ans[]){
     QueenBoard test = new QueenBoard(5);
-    System.out.println(test.toString());
+    System.out.println(test.debug());
+    System.out.println("______________________");
+    test.addQueen(2,1);
+    System.out.println(test.debug());
     System.out.println("______________________");
     test.addQueen(2,2);
-    System.out.println(test.toString());
+    test.addQueen(2,3);
     System.out.println("______________________");
     test.removeQueen(2,2);
-    System.out.println(test.toString());
+    System.out.println(test.debug());
+    System.out.println("______________________");
+    test.removeQueen(2,3);
   }
 }
