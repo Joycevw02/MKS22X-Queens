@@ -68,49 +68,59 @@ public class QueenBoard{
  *(pythonic string notation for clarity,
  *excludes the character up to the *)
  */
- public String toString(){
-   String ans = "";
-   for (int row = 0; row < side; row ++){
-     for (int col = 0; col < side; col ++){
-       if (board[row][col] == -1){
-         ans += "Q ";
+  public String toString(){
+    String ans = "";
+    for (int row = 0; row < side; row ++){
+      for (int col = 0; col < side; col ++){
+        if (board[row][col] == -1){
+          ans += "Q ";
+        }
+        else{
+          ans += "_ ";
+        }
+      }
+      ans += "\n";
+    }
+    return ans;
+  }
+   private String debug(){
+     String ans = "";
+     for (int row = 0; row < side; row ++){
+       for (int col = 0; col < side; col ++){
+         if (board[row][col] == -1){
+           ans += "Q ";
+         }
+         else if (board[row][col] == 0){
+           ans += "_ ";
+         }
+         else{
+           ans += "X ";
+         }
        }
-       else{
-         ans += "_ ";
-       }
+       ans += "\n";
      }
-     ans += "\n";
-   }
-   return ans;
- }
- private String debug(){
-   String ans = "";
-   for (int row = 0; row < side; row ++){
-     for (int col = 0; col < side; col ++){
-       if (board[row][col] == -1){
-         ans += "Q ";
-       }
-       else if (board[row][col] == 0){
-         ans += "_ ";
-       }
-       else{
-         ans += "X ";
-       }
-     }
-     ans += "\n";
-   }
-   return ans;
- }
+     return ans;
+  }
 
- /**
+/*
  *@return false when the board is not solveable and leaves the board filled with zeros;
  *        true when the board is solveable, and leaves the board in a solved state
  *@throws IllegalStateException when the board starts with any non-zero value
+*/
 
- */
- //public boolean solve(){
-//
-// }
+  public boolean solve(){
+    for (int row = 0; row < side; row ++){
+      for (int col = 0; col < side; col ++){
+        if (board[row][col] != 0){
+          throw new IllegalStateException();
+        }
+      }
+    }
+  }
+
+  public boolean help(int row){
+    
+  }
 
  /**
  *@return the number of solutions found, and leaves the board filled with only 0's
