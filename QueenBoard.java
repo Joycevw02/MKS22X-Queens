@@ -138,9 +138,20 @@ public class QueenBoard{
  *@return the number of solutions found, and leaves the board filled with only 0's
  *@throws IllegalStateException when the board starts with any non-zero value
  */
-// public int countSolutions(){
-//
-// }
+ public int countSolutions(){
+   for (int row = 0; row < side; row ++){
+     for (int col = 0; col < side; col ++){
+       if (board[row][col] != 0){
+         throw new IllegalStateException();
+       }
+     }
+   }
+ }
+
+ public int counthelp(int col){
+
+ }
+ 
   public static void main(String ans[]){
     QueenBoard test = new QueenBoard(5);
 //    System.out.println(test.debug());
