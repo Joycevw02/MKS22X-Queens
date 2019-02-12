@@ -146,12 +146,24 @@ public class QueenBoard{
        }
      }
    }
+   return counthelp(0);
  }
 
  public int counthelp(int col){
-
+   if (col == side){
+     return 1;
+   }
+   int ans = 0;
+   for (int row = 0; row < side; row ++){
+     if (addQueen(row,col)){
+       ans += counthelp(col + 1);
+     }
+     removeQueen(row,col);
+   }
+   return ans;
  }
- 
+
+
   public static void main(String ans[]){
     QueenBoard test = new QueenBoard(5);
 //    System.out.println(test.debug());
@@ -166,7 +178,8 @@ public class QueenBoard{
 //    System.out.println(test.debug());
 //    System.out.println("______________________");
 //    test.removeQueen(2,3);
-      test.help(0);
-      System.out.println(test.debug());
+//    test.help(0);
+//    System.out.println(test.debug());
+      System.out.println(test.countSolutions());
   }
 }
