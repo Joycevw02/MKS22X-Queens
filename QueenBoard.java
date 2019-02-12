@@ -116,10 +116,22 @@ public class QueenBoard{
         }
       }
     }
+    return help(0);
   }
 
-  public boolean help(int row){
-    
+  public boolean help(int col){
+    if (col == board.length){
+      return true;
+    }
+    for (int row = 0; row < side; row ++){
+      if (addQueen(row,col)){
+        if (help(col + 1)){
+          return true;
+        }
+        removeQueen(row,col);
+      }
+    }
+    return false;
   }
 
  /**
@@ -131,17 +143,19 @@ public class QueenBoard{
 // }
   public static void main(String ans[]){
     QueenBoard test = new QueenBoard(5);
-    System.out.println(test.debug());
-    System.out.println("______________________");
-    test.addQueen(2,1);
-    System.out.println(test.debug());
-    System.out.println("______________________");
-    test.addQueen(2,2);
-    test.addQueen(2,3);
-    System.out.println("______________________");
-    test.removeQueen(2,2);
-    System.out.println(test.debug());
-    System.out.println("______________________");
-    test.removeQueen(2,3);
+//    System.out.println(test.debug());
+//    System.out.println("______________________");
+//    test.addQueen(2,1);
+//    System.out.println(test.debug());
+//    System.out.println("______________________");
+//    test.addQueen(2,2);
+//    test.addQueen(2,3);
+//    System.out.println("______________________");
+//    test.removeQueen(2,2);
+//    System.out.println(test.debug());
+//    System.out.println("______________________");
+//    test.removeQueen(2,3);
+      test.help(0);
+      System.out.println(test.debug());
   }
 }
